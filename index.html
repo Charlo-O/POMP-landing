@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pomp 是给 AI 图创作者用的 Chrome 扩展：收图、收提示词、存来源、贴标签，再同步到 GitHub、Notion 或飞书。"
+    />
+    <meta name="theme-color" content="#fbf2f4" />
+    <title>Pomp · AI 图片和提示词的私人采集刀</title>
+    <link rel="icon" href="assets/pomp-logo.png" />
+    <link rel="preload" as="image" href="assets/screenshots/floating-capture.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Pomp 首页">
+        <img src="assets/pomp-logo.png" width="34" height="34" alt="" />
+        <span>Pomp</span>
+      </a>
+      <nav class="site-nav" aria-label="页面导航">
+        <a href="#workflow">工作流</a>
+        <a href="#screenshots">截图</a>
+        <a href="#sync">同步</a>
+      </nav>
+      <a class="header-cta" href="https://github.com/Charlo-O/POMP">GitHub</a>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Chrome extension for AI image collectors</p>
+          <h1 id="hero-title">Pomp</h1>
+          <p class="hero-lede">AI 图片和提示词的私人采集刀。</p>
+          <p class="hero-copy">
+            在网页上遇到喜欢的图，右键或点一下浮标，把图片、附近提示词、来源、分类和标签一起收进本地图库。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/Charlo-O/POMP">查看源码</a>
+            <a class="button secondary" href="#screenshots">看产品截图</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="workflow section-band" aria-labelledby="workflow-title">
+        <div class="section-head">
+          <p class="eyebrow">Workflow</p>
+          <h2 id="workflow-title">从“这张不错”到“以后找得到”。</h2>
+        </div>
+        <div class="workflow-grid">
+          <article>
+            <span class="step-index">01</span>
+            <h3>在网页里收住灵感</h3>
+            <p>浮标、图片悬浮按钮和右键菜单都服务同一个动作：把眼前这张图留下来。</p>
+          </article>
+          <article>
+            <span class="step-index">02</span>
+            <h3>连上下文一起归档</h3>
+            <p>提示词、反向提示词、来源链接、分类和标签都跟着记录走，少一点事后补账。</p>
+          </article>
+          <article>
+            <span class="step-index">03</span>
+            <h3>回到一座私人图库</h3>
+            <p>本地 IndexedDB 保存，按标签检索、导出、同步，给未来的自己留一条清楚的线索。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="screenshots" class="screenshots section-band" aria-labelledby="screenshots-title">
+        <div class="section-head">
+          <p class="eyebrow">Product screenshots</p>
+          <h2 id="screenshots-title">粉色是收紧过的粉，工具还是工具。</h2>
+        </div>
+        <div class="shot-feature">
+          <figure>
+            <img
+              src="assets/screenshots/floating-capture.png"
+              width="1200"
+              height="720"
+              loading="lazy"
+              alt="Pomp 在网页图片旁显示浮标与收图面板的截图"
+            />
+            <figcaption>
+              <strong>网页内采集</strong>
+              <span>浮标停在右侧，收图面板只保留保存、标签和来源这些关键动作。</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="shot-grid">
+          <figure>
+            <img
+              src="assets/screenshots/popup.png"
+              width="520"
+              height="760"
+              loading="lazy"
+              alt="Pomp 扩展弹窗的图库界面截图"
+            />
+            <figcaption>
+              <strong>扩展弹窗</strong>
+              <span>打开就进入图库和收图，不绕欢迎页。</span>
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/screenshots/options.png"
+              width="1145"
+              height="820"
+              loading="lazy"
+              alt="Pomp 设置页中 OpenAI 兼容 API 配置区域截图"
+            />
+            <figcaption>
+              <strong>设置页</strong>
+              <span>密钥、模型、保存路径和同步目标都留在本地浏览器里。</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="principles section-band" aria-labelledby="principles-title">
+        <div class="section-head">
+          <p class="eyebrow">Made for collectors</p>
+          <h2 id="principles-title">不是又一个通用 SaaS 仪表盘。</h2>
+        </div>
+        <div class="principle-layout">
+          <p class="large-copy">
+            Pomp 更像放在创作工作台上的小物件：信息密度够高，动作够短，文案像作者写给作者的便签。
+          </p>
+          <dl class="principle-list">
+            <div>
+              <dt>本地优先</dt>
+              <dd>记录先在浏览器本地落定，不把灵感默认交给远端服务。</dd>
+            </div>
+            <div>
+              <dt>提示词友好</dt>
+              <dd>正向、反向、反推结果分开保存，适合回看和二次创作。</dd>
+            </div>
+            <div>
+              <dt>克制的粉</dt>
+              <dd>陶土粉、淡胭脂和玫瑰金只用在关键动作上，不把界面做成糖纸。</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="sync" class="sync section-band" aria-labelledby="sync-title">
+        <div class="section-head">
+          <p class="eyebrow">Archive targets</p>
+          <h2 id="sync-title">需要带走时，再把图库同步出去。</h2>
+        </div>
+        <div class="sync-rows" role="list">
+          <div role="listitem">
+            <span>GitHub</span>
+            <p>图片写入 <code>images/</code>，记录写入 <code>records/</code>，适合做长期归档。</p>
+          </div>
+          <div role="listitem">
+            <span>Notion</span>
+            <p>一张图一条记录，Prompt、Category、Tags、Source URL 保持可检索。</p>
+          </div>
+          <div role="listitem">
+            <span>飞书多维表格</span>
+            <p>把 AI 图收藏变成团队也看得懂的结构化表格。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="final-title">
+        <p class="eyebrow">Start collecting</p>
+        <h2 id="final-title">给深夜浏览过的图，一个能回来的地方。</h2>
+        <a class="button primary" href="https://github.com/Charlo-O/POMP">去 GitHub 安装</a>
+      </section>
+    </main>
+  </body>
+</html>
