@@ -2,27 +2,28 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="Pomp 隐私协议：说明 Pomp Chrome 扩展如何在本地保存数据，以及用户启用第三方服务时的数据处理方式。"
+      content="Pomp 隐私说明：了解这个本地优先 Chrome 扩展如何保存 AI 图片、提示词、来源、标签、API 密钥和可选同步数据。"
     />
-    <title>Pomp 隐私协议</title>
+    <title>Pomp 隐私说明 | AI 图像提示词剪贴簿</title>
     <link rel="icon" href="assets/pomp-icon48.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="privacy-page">
-    <header class="site-header">
+  <body>
+    <header class="site-header" aria-label="页面导航">
       <a class="brand" href="index.html#top" aria-label="Pomp 首页">
         <img src="assets/pomp-icon48.png" alt="" width="48" height="48" decoding="async" />
         <span>Pomp</span>
       </a>
 
       <nav class="site-nav" aria-label="主要导航">
-        <a href="index.html#collect">收集</a>
+        <a href="index.html#capture">收图</a>
         <a href="index.html#archive">图库</a>
-        <a href="index.html#bench">工具台</a>
+        <a href="index.html#assist">AI 助手</a>
         <a href="index.html#sync">同步</a>
+        <a href="privacy.html" aria-current="page">隐私</a>
       </nav>
 
       <a class="nav-action" href="https://github.com/Charlo-O/POMP" target="_blank" rel="noreferrer">
@@ -30,84 +31,231 @@
       </a>
     </header>
 
-    <main class="policy-main">
-      <section class="policy-hero">
-        <p class="policy-kicker">Privacy Policy</p>
-        <h1>Pomp 隐私协议</h1>
-        <p>
-          Pomp 是一个本地优先的 Chrome 扩展，用来收集 AI 图像、提示词、来源、标签和备注。我们不会运营用于收集用户数据的服务器。
-        </p>
-        <span>生效日期：2026 年 6 月 8 日</span>
+    <main id="top" class="privacy-page">
+      <section class="privacy-hero" aria-labelledby="privacy-title">
+        <div>
+          <p class="hero-mark">Privacy Policy</p>
+          <h1 id="privacy-title">Pomp 隐私说明</h1>
+          <p class="privacy-lede">
+            Pomp 是一个本地优先的 Chrome 扩展。它的核心用途是帮你保存 AI 图像、提示词、来源、标签和备注；默认没有 Pomp 自有服务器，也不会把你的图库回传给作者。
+          </p>
+          <p class="privacy-date">最后更新：2026 年 6 月 8 日</p>
+        </div>
+
+        <div class="privacy-summary" aria-label="隐私重点">
+          <div>
+            <strong>默认本地</strong>
+            <span>记录保存在浏览器 IndexedDB 和本地扩展存储中。</span>
+          </div>
+          <div>
+            <strong>你来连接</strong>
+            <span>AI API、GitHub、Notion、飞书都需要你主动填写凭证并启用。</span>
+          </div>
+          <div>
+            <strong>不卖数据</strong>
+            <span>不做广告画像，不出售数据，不把图库交给数据经纪商。</span>
+          </div>
+        </div>
       </section>
 
-      <article class="policy-content">
-        <section>
-          <h2>1. 我们不会主动收集的信息</h2>
-          <p>
-            Pomp 不会主动收集你的姓名、邮箱、账号、浏览历史、支付信息或精确位置，也不包含广告追踪、分析埋点或第三方统计 SDK。
-          </p>
-        </section>
+      <section class="privacy-grid" aria-label="隐私说明正文">
+        <aside class="privacy-toc" aria-label="隐私目录">
+          <a href="#scope">适用范围</a>
+          <a href="#data">处理的信息</a>
+          <a href="#use">如何使用</a>
+          <a href="#storage">保存位置</a>
+          <a href="#sharing">第三方服务</a>
+          <a href="#permissions">权限说明</a>
+          <a href="#control">你的控制</a>
+          <a href="#limited-use">Limited Use</a>
+          <a href="#contact">联系</a>
+        </aside>
 
-        <section>
-          <h2>2. 本地保存的数据</h2>
-          <p>
-            当你使用 Pomp 保存内容时，图片、提示词、反向提示词、分类、标签、备注、来源 URL 和相关设置会优先保存在你的浏览器本地，例如 IndexedDB、Chrome storage 或下载目录。
-          </p>
-          <p>
-            这些数据默认不会发送给 Pomp 作者或任何 Pomp 自建服务。你可以在扩展内删除记录，或通过浏览器的扩展数据管理功能清除本地数据。
-          </p>
-        </section>
+        <article class="privacy-policy">
+          <section id="scope">
+            <h2>适用范围</h2>
+            <p>
+              本说明适用于 Pomp Chrome 扩展，以及这个静态落地页。落地页不包含统计脚本、广告脚本或登录系统；扩展中的数据处理发生在你的浏览器、你配置的 API 服务，以及你主动启用的同步目标之间。
+            </p>
+          </section>
 
-        <section>
-          <h2>3. 你主动启用的第三方服务</h2>
-          <p>
-            如果你配置并使用 OpenAI 兼容 API、GitHub、Notion 或飞书多维表格，Pomp 会把完成对应功能所需的数据发送给你选择的第三方服务。
-          </p>
-          <p>
-            例如，反推提示词或智能分类可能会把图片内容发送给你配置的视觉模型服务；同步功能可能会把图片、提示词和记录写入你配置的 GitHub 仓库、Notion 数据库或飞书表格。第三方服务会按照它们自己的隐私政策处理这些数据。
-          </p>
-        </section>
+          <section id="data">
+            <h2>我们处理哪些信息</h2>
+            <div class="policy-list">
+              <div>
+                <h3>图库记录</h3>
+                <p>
+                  你保存的图片数据或图片地址、来源页面 URL、图片来源 URL、正向提示词、负向提示词、反推提示词、分类、标签、备注、创建和更新时间、生成来源以及同步状态。
+                </p>
+              </div>
+              <div>
+                <h3>页面上下文</h3>
+                <p>
+                  当你右键保存图片、点击页面浮标、收集选中文本或补充提示词时，Pomp 会读取当前页面 URL、图片 URL、图片 alt/title、选中文本、图片附近文本和页面元信息，用来提取 prompt 候选、来源和标签。近期采集上下文可能会短暂写入本地扩展存储，以便把刚保存的图片和后续补充的提示词接起来。
+                </p>
+              </div>
+              <div>
+                <h3>设置与凭证</h3>
+                <p>
+                  API 地址、API Key、模型名称、系统提示词、下载目录、允许显示浮标的网站、标签面板、采集模板，以及你填写的 GitHub Token、仓库信息、Notion Token、Database ID、飞书 Access Token、App Token 和 Table ID。
+                </p>
+              </div>
+              <div>
+                <h3>AI 处理结果</h3>
+                <p>
+                  反推得到的提示词、自动分类结果、标签建议、备注建议、生成图结果、生成图修订提示词，以及与这些结果相关的错误状态。
+                </p>
+              </div>
+            </div>
+          </section>
 
-        <section>
-          <h2>4. 权限用途</h2>
-          <p>
-            Pomp 使用浏览器权限来完成扩展功能，包括在网页中显示收图入口、读取你主动选择保存的页面内容、保存下载文件、打开扩展弹窗和保存本地设置。
-          </p>
-          <p>
-            这些权限只用于提供收集、整理、生成、导出和同步功能，不用于广告追踪或用户画像。
-          </p>
-        </section>
+          <section id="use">
+            <h2>这些信息如何使用</h2>
+            <ul>
+              <li>保存、搜索、筛选和导出你的 AI 图片提示词图库。</li>
+              <li>在你触发反推、分类或生图时，把必要的图片或提示词发送给你配置的 OpenAI-compatible API。</li>
+              <li>在你启用自动导出或点击导出时，把记录写入浏览器下载目录。</li>
+              <li>在你启用远程同步或手动同步时，把必要字段写入你配置的 GitHub、Notion 或飞书目标。</li>
+              <li>保存扩展 UI 状态，例如浮标位置、当前采集流程和最近生成状态。</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2>5. API Key 和访问令牌</h2>
-          <p>
-            你在 Pomp 中填写的 API Key、GitHub token、Notion token 或飞书访问配置会保存在你的本地浏览器中，用于向你配置的服务发起请求。请妥善保管这些凭证，并只授予必要权限。
-          </p>
-        </section>
+          <section id="storage">
+            <h2>数据保存在哪里</h2>
+            <div class="data-table" role="table" aria-label="数据保存位置">
+              <div role="row">
+                <strong role="columnheader">位置</strong>
+                <strong role="columnheader">保存内容</strong>
+              </div>
+              <div role="row">
+                <span role="cell">浏览器 IndexedDB</span>
+                <span role="cell">图库记录和图片 data URL，数据库名为 <code>pomp-ai-prompt-archive</code>。</span>
+              </div>
+              <div role="row">
+                <span role="cell">Chrome 本地扩展存储</span>
+                <span role="cell">设置、API Key、同步 Token、待处理采集上下文和 UI 状态。</span>
+              </div>
+              <div role="row">
+                <span role="cell">浏览器下载目录</span>
+                <span role="cell">你主动导出的 ZIP、HTML 表格、图片、prompt 文本和 JSON 记录。</span>
+              </div>
+              <div role="row">
+                <span role="cell">你启用的第三方服务</span>
+                <span role="cell">只有在你配置并启用对应同步或 API 功能时才会写入。</span>
+              </div>
+            </div>
+          </section>
 
-        <section>
-          <h2>6. 数据导出与删除</h2>
-          <p>
-            Pomp 支持将本地记录导出到你的下载目录，或同步到你配置的第三方服务。你可以在扩展中删除本地记录，也可以在对应第三方服务中删除已同步的数据。
-          </p>
-        </section>
+          <section id="sharing">
+            <h2>会和哪些第三方共享</h2>
+            <p>
+              Pomp 没有自有云端数据库。下列共享都由你主动配置或触发，且用于完成你在扩展里看得到的功能。
+            </p>
+            <div class="policy-list compact">
+              <div>
+                <h3>OpenAI-compatible API</h3>
+                <p>
+                  默认地址是 OpenAI API。你也可以改成其他兼容端点。反推、分类和生图时，相关图片、图片 URL、prompt、负向 prompt 和设置里的系统提示词会发送到该端点。
+                </p>
+              </div>
+              <div>
+                <h3>GitHub</h3>
+                <p>
+                  启用后，Pomp 会把图片、prompt 文本、负向 prompt、来源 URL、单条记录 JSON 和 records.json 表写入你指定的仓库路径。公开仓库会让这些内容公开可见。
+                </p>
+              </div>
+              <div>
+                <h3>Notion</h3>
+                <p>
+                  启用后，Pomp 会向你指定的 Notion Database 创建页面，写入 prompt、分类、标签、来源 URL、图片 URL、备注，以及负向 prompt 和反推 prompt 文本。
+                </p>
+              </div>
+              <div>
+                <h3>飞书多维表格</h3>
+                <p>
+                  启用后，Pomp 会向你指定的多维表格写入 prompt、负向 prompt、分类、标签、来源 URL、图片 URL 和备注字段。
+                </p>
+              </div>
+            </div>
+          </section>
 
-        <section>
-          <h2>7. 政策更新</h2>
-          <p>
-            如果 Pomp 的数据处理方式发生实质变化，我们会更新本页面，并在项目仓库中保留可追踪的变更记录。
-          </p>
-        </section>
+          <section id="permissions">
+            <h2>Chrome 权限说明</h2>
+            <div class="permission-grid">
+              <div>
+                <strong><code>storage</code></strong>
+                <span>保存扩展设置、采集状态和图库相关本地数据。</span>
+              </div>
+              <div>
+                <strong><code>downloads</code></strong>
+                <span>把 ZIP、HTML 表格、图片和记录文件导出到浏览器下载目录。</span>
+              </div>
+              <div>
+                <strong><code>contextMenus</code></strong>
+                <span>提供右键保存图片、反推图片、保存选中文本等入口。</span>
+              </div>
+              <div>
+                <strong><code>activeTab</code></strong>
+                <span>让扩展在你当前操作的标签页完成采集、提示和状态更新。</span>
+              </div>
+              <div>
+                <strong><code>&lt;all_urls&gt;</code></strong>
+                <span>在用户访问的网站上注入 Pomp 内容脚本，以显示浮标、识别图片、读取来源和提取图片附近的 prompt。浮标默认只在设置里的允许网站显示。</span>
+              </div>
+            </div>
+          </section>
 
-        <section>
-          <h2>8. 联系方式</h2>
-          <p>
-            如对隐私协议或数据处理方式有疑问，可以通过
-            <a href="https://github.com/Charlo-O/POMP/issues" target="_blank" rel="noreferrer">GitHub Issues</a>
-            联系项目维护者。
-          </p>
-        </section>
-      </article>
+          <section id="security">
+            <h2>安全与限制</h2>
+            <p>
+              API Key 和同步 Token 保存在 Chrome 本地扩展存储中，Pomp 不会把它们发送给作者的服务器。请只在可信设备和可信 Chrome 配置文件里使用这些凭证。默认 API 和内置同步端点使用 HTTPS；如果你自定义 API 地址，请优先使用 HTTPS 端点。
+            </p>
+          </section>
+
+          <section id="control">
+            <h2>你的控制</h2>
+            <ul>
+              <li>你可以在 Pomp 弹窗里删除单条图库记录。</li>
+              <li>你可以在设置页删除或替换 API Key、Token、同步目标和允许显示的网站。</li>
+              <li>你可以关闭自动下载和自动同步；不开启远程目标时，记录不会同步到 GitHub、Notion 或飞书。</li>
+              <li>卸载扩展或清除扩展站点数据会移除浏览器内的本地扩展数据。已经导出到下载目录、GitHub、Notion 或飞书的数据，需要到对应位置自行删除。</li>
+            </ul>
+          </section>
+
+          <section id="limited-use">
+            <h2>Chrome Web Store Limited Use</h2>
+            <p class="limited-use">
+              The use of information received from Google APIs will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.
+            </p>
+            <p>
+              Pomp 仅将通过 Chrome 扩展权限取得的信息用于提供或改进“保存 AI 图片提示词图库”这一用户可见功能。Pomp 不会把用户数据用于个性化广告、再营销、信用评估，也不会出售给广告平台、数据经纪商或信息转售方。
+            </p>
+          </section>
+
+          <section id="children">
+            <h2>儿童隐私</h2>
+            <p>
+              Pomp 面向需要整理 AI 图像工作流的创作者和研究者，不面向儿童提供服务，也不会有意收集儿童个人信息。
+            </p>
+          </section>
+
+          <section id="changes">
+            <h2>变更</h2>
+            <p>
+              如果扩展的数据处理方式发生实质变化，本说明会随项目更新。发布到 Chrome Web Store 时，应确保商店后台披露、扩展 UI 和本说明保持一致。
+            </p>
+          </section>
+
+          <section id="contact">
+            <h2>联系</h2>
+            <p>
+              你可以通过
+              <a href="https://github.com/Charlo-O/POMP/issues" target="_blank" rel="noreferrer">GitHub Issues</a>
+              反馈隐私、安全或数据处理问题。
+            </p>
+          </section>
+        </article>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -115,12 +263,12 @@
         <img src="assets/pomp-icon48.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
         <div>
           <strong>Pomp</strong>
-          <span>AI 图像灵感私人图库</span>
+          <span>AI 图像提示词剪贴簿</span>
         </div>
       </div>
-      <p>隐私协议地址：https://pomp.pw/privacy.html</p>
+      <p>把夜里遇见的好图，认真接住。</p>
       <div class="footer-links">
-        <a href="index.html">返回首页</a>
+        <a href="index.html#top">返回首页</a>
         <a href="https://github.com/Charlo-O/POMP" target="_blank" rel="noreferrer">查看项目</a>
       </div>
     </footer>
